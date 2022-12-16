@@ -121,7 +121,9 @@ header {
     .galary {
         grid-template-columns: 1fr;
     }
-
+    .slidee h2 {
+        font-size: 1.5rem;
+    }
     .galary article {
         height: 600px;
     }
