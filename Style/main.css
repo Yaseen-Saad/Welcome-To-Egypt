@@ -67,15 +67,23 @@ header {
     .galary article {
         height: 800px;
     }
+
+    .galary article p {
+        font-size: .8rem;
+    }
 }
 
-@media screen and (max-width:768px) and (min-width:567px) {
+@media screen and (max-width:567px) {
     .galary {
         grid-template-columns: 1fr;
     }
 
     .galary article {
         height: 800px;
+    }
+
+    .galary article p {
+        font-size: .8rem;
     }
 }
 
