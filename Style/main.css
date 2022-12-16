@@ -126,7 +126,12 @@ header {
         height: 400px;
     }
 
+    .galary article h2 {
+        font-size: .8rem;
+    }
+
     .galary article p {
         font-size: .5rem;
+        padding: 0;
     }
 }
