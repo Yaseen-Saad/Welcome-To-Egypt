@@ -107,12 +107,26 @@ header {
     }
 }
 
-@media screen and (max-width:769px) and (min-width:0px){
+@media screen and (max-width:769px) and (min-width:540px) {
     .galary {
         grid-template-columns: 1fr;
     }
 
     .galary article {
         height: 400px;
+    }
+}
+
+@media screen and (max-width:539px) and (min-width:0px) {
+    .galary {
+        grid-template-columns: 1fr;
+    }
+
+    .galary article {
+        height: 400px;
+    }
+
+    .galary article p {
+        font-size: .5rem;
     }
 }
