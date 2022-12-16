@@ -35,12 +35,13 @@ header {
 .slidee h2 {
     font-size: 3rem;
     z-index: 200;
+    text-align: center;
     margin: 0;
 }
 
 .slidee p {
     z-index: 200;
-
+    text-align: center;
 }
 
 .overlayer {
@@ -73,7 +74,7 @@ header {
 
 .galary article h2 {
     position: absolute;
-    font-size: 2rem;
+    font-size: 1.6rem;
     padding-right: 30px;
     bottom: 0;
 }
@@ -83,7 +84,7 @@ header {
     position: relative;
     bottom: 0;
     width: 80%;
-    font-size: 1rem;
+    font-size: .8rem;
     margin: 0;
     padding: 20px;
     right: -100%;
@@ -105,7 +106,7 @@ header {
     }
 
     .galary article p {
-        font-size: .8rem;
+        font-size: .5rem;
     }
 }
 
@@ -119,6 +120,6 @@ header {
     }
 
     .galary article p {
-        font-size: .8rem;
+        font-size: .5rem;
     }
 }
