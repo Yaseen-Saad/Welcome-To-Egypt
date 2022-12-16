@@ -85,7 +85,7 @@ header {
     position: relative;
     bottom: 0;
     width: 80%;
-    font-size: .8rem;
+    font-size: .6rem;
     margin: 0;
     padding: 20px;
     right: -100%;
@@ -105,10 +105,6 @@ header {
     .galary article {
         height: 400px;
     }
-
-    .galary article p {
-        font-size: .5rem;
-    }
 }
 
 @media screen and (max-width:769px) {
@@ -118,9 +114,5 @@ header {
 
     .galary article {
         height: 400px;
-    }
-
-    .galary article p {
-        font-size: .5rem;
     }
 }
