@@ -107,7 +107,7 @@ header {
     }
 }
 
-@media screen and (max-width:769px) {
+@media screen and (max-width:769px) and (min-width:0px){
     .galary {
         grid-template-columns: 1fr;
     }
