@@ -59,15 +59,23 @@ header {
     grid-template-columns: repeat(3, 1fr);
 }
 
-@media screen and (max-width:768px) and (min-width:567px) {
+@media screen and (max-width:1400px) and (min-width:769px) {
     .galary {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .galary article {
+        height: 800px;
+    }
 }
 
-@media screen and (max-width:566px) {
+@media screen and (max-width:768px) and (min-width:567px) {
     .galary {
         grid-template-columns: 1fr;
+    }
+
+    .galary article {
+        height: 800px;
     }
 }
 
@@ -80,7 +88,7 @@ header {
     border-radius: 15px 68px 15px 68px;
     background-position: center;
     position: relative;
-    height: 800px;
+    height: 600px;
 }
 
 .galary article h2 {
