@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./Style/admins.css">
+    <link rel="stylesheet" href="./Style/main.css">
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
+</head>
+
+<body>
+    <main>
+        <div class="overlayer"></div>
+        <p id="paragraph">سجل الدخول كمشرف</p>
+        <form id="login">
+            <input type="text" id="naem">
+            <input type="text" id="mail">
+            <input type="password" id="passs">
+            <input type="submit" onclick="login(event)" value="سجل الدخول">
+        </form>
+        <p id="error"></p>
+        <script>
+            let form = document.querySelector('form#login'),
+                name = document.getElementById('naem')
+            if (sessionStorage.loggedIn) {
+                form.remove()
+                document.querySelector('p#paragraph').innerText = `مرحبا بك يا  ${sessionStorage.name}😊`
+                document.getElementById('error').remove()
+            }
+
+            function login(event) {
+                event.preventDefault()
+                let
+                    mail = document.getElementById("mail").value.trim(""),
+                    pass = document.getElementById("passs").value.trim("")
+                name = name.value
+                if (name === "ياسين" && mail === "yaseen.saad.frontend@gmail.com" && pass === "انا مشرف") {
+                    sessionStorage.setItem("loggedIn", true)
+                    sessionStorage.setItem("name", name)
+                    form.remove()
+                    document.querySelector('p#paragraph').innerText = `مرحبا بك يا ${name} 😊`
+                    document.getElementById('error').remove()
+                } else {
+                    document.getElementById('error').innerText = "انت لست مشرف⛔  ";
+                }
+
+            }
+//     const firebaseConfig = {
+//     apiKey: "AIzaSyABZhi1dRA3s1VnaJACrpTy2XJZPRIb23Q",
+//     authDomain: "esp32-b7b1a.firebaseapp.com",
+//     databaseURL: "https://esp32-b7b1a-default-rtdb.firebaseio.com",
+//     projectId: "esp32-b7b1a",
+//     storageBucket: "esp32-b7b1a.appspot.com",
+//     messagingSenderId: "629790213722",
+//     appId: "1:629790213722:web:7eec5c2481fad8f384ba63"
+// };
+// // Initialize Firebase
+// firebase.initializeApp(firebaseConfig);
+// // Set database letiable
+// let database = firebase.database()
+
+// let data = [];
+//         database.ref('users/').on('value', function (snapshot) {
+//             data = snapshot.val()
+
+//         })
+//         let id = data.length
+//         database.ref('users/' + id).set({
+//             username: name,
+//             password: pass,
+//             "e-mail": mail,
+//         })
+//         alert('Welcome')
+
+//
+        </script>
+    </main>
+</body>
+
+</html>
