@@ -97,7 +97,7 @@ header {
     right: 10px;
 }
 
-@media screen and (max-width:1400px) and (min-width:769px) {
+@media screen and (max-width:1400px) and (min-width:946px) {
     .galary {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -107,7 +107,7 @@ header {
     }
 }
 
-@media screen and (max-width:769px) and (min-width:540px) {
+@media screen and (max-width:945px) and (min-width:540px) {
     .galary {
         grid-template-columns: 1fr;
     }
