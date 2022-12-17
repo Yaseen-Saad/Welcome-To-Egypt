@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ar">
 
 <head>
   <meta charset="UTF-8">
@@ -8,6 +8,7 @@
   <title>مرحبا بك في مصر</title>
   <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
   <link rel="stylesheet" href="Style/main.css">
+  <link rel="stylesheet" href="Style/home.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.6/assets/owl.carousel.min.css">
   <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.6/assets/owl.theme.default.min.css">
@@ -19,6 +20,16 @@
 </head>
 
 <body>
+  <!-- Start Nav -->
+  <nav>
+    <ul>
+      <li>سجل كمشرف</li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </nav>
+  <!-- End Nav -->
   <!-- Start Preload-->
   <div class="preloader"><img src="images/logotest-removebg-preview.png" />
     <h2>مرحبا بك في مصر</h2>
@@ -94,6 +105,11 @@
       </div>
     </div>
   </header>
+  <script>
+    const resize = () => Array(...document.querySelectorAll('.slidee')).map(ele => ele.style.width = getComputedStyle(document.querySelector('header')).width)
+    resize()
+    window.onresize = resize
+  </script>
   <!-- End Header -->
   <!-- Start Some Monuments -->
   <section class="galary">
@@ -144,14 +160,10 @@
       document.querySelector(".preloader").classList.add("loaded")
 
     }</script>
-  <form>
-    <input type="text" id="username">
-    <input type="password" id="password">
-    <input type="submit" onclick="save(event)" value="submit">
-  </form>
 
 
 
+  <button id="deleeet">reeset</button>
 
   <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
