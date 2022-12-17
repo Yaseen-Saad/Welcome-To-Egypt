@@ -9,13 +9,26 @@ const firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-// Set database variable
-var database = firebase.database()
+// Set database letiable
+let database = firebase.database()
+let data = [];
+function get() {
+    let username = document.getElementById('username').value
+
+    let user_ref = database.ref('users/' + username)
+    user_ref.on('value', function (snapshot) {
+        data = snapshot.val()
+    })
+
+}
+get()
 function save(e) {
     e.preventDefault()
-    var username = document.getElementById('username').value
-    var password = document.getElementById('password').value
-    database.ref('users/' + username).set({
+    let id = data.length;
+
+    let username = document.getElementById('username').value
+    let password = document.getElementById('password').value
+    database.ref('users/' + id).set({
         username: username,
         password: password,
     })
