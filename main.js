@@ -1,18 +1,24 @@
 const firebaseConfig = {
-    apiKey: "AIzaSyBFAzmoAPFyC6F8KX7i3GVOQTyt3FUx020",
-    authDomain: "test-8cee9.firebaseapp.com",
-    databaseURL: "https://test-8cee9-default-rtdb.firebaseio.com",
-    projectId: "test-8cee9",
-    storageBucket: "test-8cee9.appspot.com",
-    messagingSenderId: "948419772366",
-    appId: "1:948419772366:web:daf1f00812e43dd054759f",
-    measurementId: "G-863ZW9LD04"
+    apiKey: "AIzaSyABZhi1dRA3s1VnaJACrpTy2XJZPRIb23Q",
+    authDomain: "esp32-b7b1a.firebaseapp.com",
+    databaseURL: "https://esp32-b7b1a-default-rtdb.firebaseio.com",
+    projectId: "esp32-b7b1a",
+    storageBucket: "esp32-b7b1a.appspot.com",
+    messagingSenderId: "629790213722",
+    appId: "1:629790213722:web:7eec5c2481fad8f384ba63"
 };
+// Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+// Set database variable
+var database = firebase.database()
+function save(e) {
+    e.preventDefault()
+    var username = document.getElementById('username').value
+    var password = document.getElementById('password').value
+    database.ref('users/' + username).set({
+        username: username,
+        password: password,
+    })
 
-onload = () => {
-    document.querySelector(".preloader").classList.add("loaded")
-    const dbRef = firebase.darabase().ref()
-    console.log(dbRef);
-
+    alert('Saved')
 }
