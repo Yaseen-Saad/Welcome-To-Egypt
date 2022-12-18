@@ -29,3 +29,92 @@ body {
     left: 0;
     background-color: rgba(14, 1, 1, 0.448);
 }
+
+nav {
+    display: flex;
+    position: fixed;
+    z-index: 200;
+    transition: .5s all ease-in-out;
+    width: 100%;
+
+}
+
+nav.active {
+    background-color: #fff;
+}
+
+nav a {
+    color: #fff;
+    transition: .5s ease-in-out;
+    text-decoration: none;
+}
+
+nav.active a {
+    color: #000;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+
+
+
+}
+
+body .preloader {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: #fff;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    z-index: 20000;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+body .preloader h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-top: 50px;
+    margin-inline:30px ;
+    color: #000;
+}
+
+body .preloader img {
+    height: 20%;
+    -webkit-animation: preloadAnimation alternate 2s infinite;
+    animation: preloadAnimation alternate 2s infinite;
+}
+
+body .preloader.loaded {
+    display: none;
+}
+
+@-webkit-keyframes preloadAnimation {
+    to {
+        -webkit-transform: scale(1.3);
+        transform: scale(1.3);
+    }
+}
+
+@keyframes preloadAnimation {
+    to {
+        -webkit-transform: scale(1.3);
+        transform: scale(1.3);
+    }
+}
