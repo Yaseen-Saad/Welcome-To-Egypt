@@ -1,37 +1,21 @@
-const firebaseConfig = {
-    apiKey: "AIzaSyABZhi1dRA3s1VnaJACrpTy2XJZPRIb23Q",
-    authDomain: "esp32-b7b1a.firebaseapp.com",
-    databaseURL: "https://esp32-b7b1a-default-rtdb.firebaseio.com",
-    projectId: "esp32-b7b1a",
-    storageBucket: "esp32-b7b1a.appspot.com",
-    messagingSenderId: "629790213722",
-    appId: "1:629790213722:web:7eec5c2481fad8f384ba63"
-};
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-// Set database letiable
-let database = firebase.database()
-let data = [];
-function get() {
-    let username = document.getElementById('username').value
-
-    let user_ref = database.ref('users/' + username)
-    user_ref.on('value', function (snapshot) {
-        data = snapshot.val()
-    })
-
+const nav = document.querySelector('nav');
+onscroll = () => {
+    if (scrollY >= 200) nav.classList.add('active')
+    else nav.classList.remove('active')
 }
-get()
-function save(e) {
-    e.preventDefault()
-    let id = data.length;
+  const firebaseConfig = {
+        apiKey: "AIzaSyA-NjEsZD3KeQXx1cCPF6P3VMQZS8Tq0EE",
+        authDomain: "egyption-monuments.firebaseapp.com",
+        databaseURL: "https://egyption-monuments-default-rtdb.europe-west1.firebasedatabase.app",
+        projectId: "egyption-monuments",
+        storageBucket: "egyption-monuments.appspot.com",
+        messagingSenderId: "210061951069",
+        appId: "1:210061951069:web:d582f186f8003ea1d50db4",
+        measurementId: "G-G0TZ57X8FH"
+      };
 
-    let username = document.getElementById('username').value
-    let password = document.getElementById('password').value
-    database.ref('users/' + id).set({
-        username: username,
-        password: password,
-    })
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
 
-    alert('Saved')
-}
+      // Set database letiable
+      let database = firebase.database()
