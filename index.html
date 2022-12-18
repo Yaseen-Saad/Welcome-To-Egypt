@@ -8,25 +8,21 @@
   <title>مرحبا بك في مصر</title>
   <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
   <link rel="stylesheet" href="Style/main.css">
-  <link rel="stylesheet" href="Style/home.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.6/assets/owl.carousel.min.css">
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.6/assets/owl.theme.default.min.css">
+  <link rel="stylesheet" id="pageStyle" href="Style/home.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100;300;500;800&display=swap"
     rel="stylesheet">
-
 </head>
 
 <body>
   <!-- Start Nav -->
   <nav>
     <ul>
-      <li>سجل كمشرف</li>
-      <li></li>
-      <li></li>
-      <li></li>
+      <li id="home"><a href="#">المنزل</a></li>
+      <li id="login"><a href="./admins.html">سجل كمشرف</a></li>
+      <li id="look"><a href="#">تصفح الآثار</a></li>
+      <!-- <li></li> -->
     </ul>
   </nav>
   <!-- End Nav -->
@@ -34,163 +30,81 @@
   <div class="preloader"><img src="images/logotest-removebg-preview.png" />
     <h2>مرحبا بك في مصر</h2>
   </div>
-
-  <style>
-    body .preloader {
-      position: fixed;
-      width: 100vw;
-      height: 100vh;
-      background-color: #fff;
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      z-index: 20000;
-      display: flex;
-      -webkit-box-pack: center;
-      -webkit-justify-content: center;
-      -ms-flex-pack: center;
-      justify-content: center;
-      -webkit-box-align: center;
-      -webkit-align-items: center;
-      -ms-flex-align: center;
-      align-items: center;
-      flex-direction: column;
-    }
-
-    body .preloader h2 {
-      font-size: 2.5rem;
-      text-align: center;
-      margin-top: 50px;
-      color: #000;
-    }
-
-    body .preloader img {
-      height: 20%;
-      -webkit-animation: preloadAnimation alternate 2s infinite;
-      animation: preloadAnimation alternate 2s infinite;
-    }
-
-    body .preloader.loaded {
-      display: none;
-    }
-
-    @-webkit-keyframes preloadAnimation {
-      to {
-        -webkit-transform: scale(1.3);
-        transform: scale(1.3);
-      }
-    }
-
-    @keyframes preloadAnimation {
-      to {
-        -webkit-transform: scale(1.3);
-        transform: scale(1.3);
-      }
-    }
-  </style>
   <!-- End Preload-->
-  <!-- Start Header -->
-  <header>
-    <div class="owl-carousel sliderr">
-      <div class="slidee" style="background-image: url(./images/12891.webp);">
-        <div class="overlayer"></div>
-        <h2>مرحبا بك في مصر </h2>
-        <p>اهرامات الجيزة</p>
-      </div>
-      <div class="slidee"
-        style="background-image: url(./images/abu-simbel-rockcut-great-temple-ramesses-ii-egypt_400112-951.jpg);">
-        <div class="overlayer"></div>
-        <h2>مرحبا بك في مصر</h2>
-        <p>معبد ابو سمبل</p>
-      </div>
-    </div>
-  </header>
+  <main id="homePage">
+    <!-- Start Header -->
+    <header>
+      <div class="owl-carousel sliderr">
+
+
+    </header>
+
+    <!-- End Header -->
+    <!-- Start Some Monuments -->
+    <section class="galary">
+    </section>
+    <!-- End Some Monuments -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
+  </main>
+
   <script>
-    const resize = () => Array(...document.querySelectorAll('.slidee')).map(ele => ele.style.width = getComputedStyle(document.querySelector('header')).width)
-    resize()
-    window.onresize = resize
+    const resize = () => {
+      Array(...document.querySelectorAll('.slidee')).map(ele => ele.style.width = getComputedStyle(document.querySelector('header')).width)
+    }
+    window.onresize = resize;
   </script>
-  <!-- End Header -->
-  <!-- Start Some Monuments -->
-  <section class="galary">
-    <article style="background-image: url(./images/Edfu_Temple_032010_21.jpg);">
-      <div class="overlayer"></div>
-      <h2>معبد حورس</h2>
-      <p> تمّ بناء هذا المعبد تكريماً لحورس بين عامي 237 و57 قبل الميلاد، وقد تم الحفاظ عليه جيدا بشكل مدهش ، حيث يروي
-        قصّة رائعة للغاية، وبالتالي فهو يشكّل أحد أكثر كنوز مصر التي لا تقدّر بثمن.
-      </p>
-    </article>
-
-    <article style="background-image: url(./images/new-kingdom.jpg);">
-      <div class="overlayer"></div>
-      <h2>معبد الأقصر</h2>
-      <p>من المستحيل تجاهل هذا المعبد المخصّص لعبادة آمون، فهو يظهر الانغماس الحقيقيّ
-        بين مصر والفراعنة. كما أنّه يحتفظ بآثار تعود إلى العديد من الكنائس
-        و ثدكلن كان مكانًا للصلاة لأكثر من 3500 عام. وهو المعبد الأقدم في العالم.</p>
-    </article>
-    <article style="background-image: url(./images/hatshepsut-temple.jpg_2022-08-09-01-53-55.jpg);">
-      <div class="overlayer"></div>
-      <h2>معبد حتشبسوت
-      </h2>
-      <p>معبد مخصّص بشكل رئيسيّ لحتحور وآمون ري وأنوبيس ويونموتيف. بني أثناء حكم الملكة حتشبسوت، ويضمّ العديد من الكنائس
-        الرائعة بالإضافة إلى التماثيل والنقوش الأخرى.
-      </p>
-    </article>
-    <article style="background-image: url(./images/Edfu_Temple_032010_21.jpg);">
-      <div class="overlayer"></div>
-    </article>
-    <article style="background-image: url(./images/Edfu_Temple_032010_21.jpg);">
-      <div class="overlayer"></div>
-    </article>
-    <article style="background-image: url(./images/Edfu_Temple_032010_21.jpg);">
-      <div class="overlayer"></div>
-    </article>
-    <article style="background-image: url(./images/Edfu_Temple_032010_21.jpg);">
-      <div class="overlayer"></div>
-    </article>
-    <article style="background-image: url(./images/Edfu_Temple_032010_21.jpg);">
-      <div class="overlayer"></div>
-    </article>
-    <article style="background-image: url(./images/Edfu_Temple_032010_21.jpg);">
-      <div class="overlayer"></div>
-    </article>
-  </section>
-  <!-- End Some Monuments -->
-  <script>onload = () => {
-      document.querySelector(".preloader").classList.add("loaded")
-
-    }</script>
-
-
-
-  <button id="deleeet">reeset</button>
-
-  <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.3.0/jquery-migrate.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
   <script src="./main.js"></script>
   <script>
-    $('.owl-carousel.sliderr').owlCarousel({
-      loop: true,
-      margin: 0,
-      pagination: false,
-      autoplayHoverPause: true,
-      nav: true,
-      autoWidth: true,
-      rtl: true,
-      autoplay: true,
-      animateOut: 'fadeOut',
-      animateIn: 'fadeIn',
-      autoHeight: true,
-      autoplayTimeout: 3000,
-      smartSpeed: 800,
-    })
 
+    function getDataForHomePage() {
+      database.ref('home/').on('value', function (snapshot) {
+        let data = snapshot.val()
+        for (const element in data) {
+          if (Object.hasOwnProperty.call(data, element)) {
+            const one = data[element];
+            let article = document.createElement("article")
+            let overlay = document.createElement("div")
+            let title = document.createElement("h2")
+            let p = document.createElement("p")
+            overlay.classList.add('overlayer')
+            article.style.backgroundImage = `url(${one.image})`
+            title.innerText = one.title
+            p.innerText = one.p
+            article.append(overlay, title, p)
+            document.querySelector('.galary').append(article)
+          }
+        }
+      }
+      )
+    }
+    getDataForHomePage()
+  </script>
+  <script>
+    let timeout = 2000
+    function getDataForHomePageLanding() {
+      database.ref('landingText/').on('value', function (snapshot) {
+        let data = snapshot.val()
+        data = data[parseInt(Math.random() * data.length
+        )]
+        let slide = document.createElement("div")
+          , overlay = document.createElement("div")
+          , title = document.createElement("h2")
+          , p = document.createElement("p")
+        slide.classList.add('slidee')
+        overlay.classList.add('overlayer')
+        slide.style.backgroundImage = `url(${data.image})`
+        title.innerText = data.title
+        p.innerText = data.subTitle
+        slide.append(overlay, title, p)
+        document.querySelector('header .owl-carousel.sliderr').append(slide)
 
+      }
 
+      )
+    }
+    getDataForHomePageLanding()
+    document.querySelector(".preloader").classList.add("loaded")
   </script>
 </body>
 
