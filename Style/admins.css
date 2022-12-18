@@ -55,9 +55,11 @@ label,
 p,
 div:has(#checkbox) {
     display: flex;
+  
     align-items: center;
 }
-
+.logged p:first-child{
+    justify-content:center;}
 #checkbox {
     width: 30px;
     height: 30px;
