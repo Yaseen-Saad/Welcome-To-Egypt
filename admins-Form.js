@@ -6,13 +6,14 @@ if (sessionStorage.loggedIn) {
     document.getElementById('error').remove()
     document.querySelector('.logged').classList.add('active')
 }
+
 function login(event) {
     event.preventDefault()
     let
         mail = document.getElementById("mail").value.trim(""),
         pass = document.getElementById("passs").value.trim("")
     name = name.value
-    if (true/*name === "ياسين" && mail === "yaseen.saad.frontend@gmail.com" && pass === "انا مشرف"*/) {
+    if (name === "ياسين" && mail === "yaseen.saad.frontend@gmail.com" && pass === "انا مشرف") {
         sessionStorage.setItem("loggedIn", true)
         sessionStorage.setItem("name", name)
         form.remove()
@@ -21,9 +22,16 @@ function login(event) {
         document.getElementById('error').remove()
     } else {
         document.getElementById('error').innerText = "انت لست مشرف⛔  ";
+
+
+
     }
 }
 onload = () => document.querySelector(".preloader").classList.add("loaded")
+
+
+
+
 // addForm()
 function addForm() {
     document.querySelector('.logged').remove()
@@ -57,7 +65,11 @@ function addForm() {
     checkboxLabel.setAttribute('for', "checkbox");
     returnn.setAttribute('onclick', "location.reload()");
     submit.setAttribute('value', "اضف اثر");
+
     returnn.classList.add('return')
+
+
+
     title.type = "text";
     p.type = "text";
     image.type = "text";
@@ -71,6 +83,9 @@ function addForm() {
     form.append(titleLabel, title, pLabel, p, imageLabel, image, checkboxDiv, error, submit)
     document.querySelector('main').append(returnn, form)
 }
+
+
+
 let loading = document.querySelector('.loading')
 function addMonument(event, inputData) {
     event.preventDefault();
@@ -123,8 +138,10 @@ function addMonument(event, inputData) {
                 inputData[0].value = ""
                 inputData[1].value = ""
                 inputData[2].value = ""
+
             }
         }, 3000);
+
 
     } else {
         document.querySelector('.addError').innerText = "برجاء ادخال معلومات حقيقية ⚠️"
