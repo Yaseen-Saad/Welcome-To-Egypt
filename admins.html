@@ -8,14 +8,49 @@
     <title>Document</title>
     <link rel="stylesheet" href="./Style/admins.css">
     <link rel="stylesheet" href="./Style/main.css">
-    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
+
 </head>
 
 <body>
+    <!-- Start Nav -->
+    <nav>
+        <ul>
+            <li id="home"><a href="./index.html">المنزل</a></li>
+            <li id="login"><a href="#">سجل كمشرف</a></li>
+            <li id="look"><a href="#">تصفح الآثار</a></li>
+        </ul>
+    </nav>
+    <!-- End Nav -->
+    <!-- Start Preload-->
+    <div class="preloader"><img src="images/logotest-removebg-preview.png" />
+        <h2>مرحبا بك في مصر</h2>
+    </div>
+    <!-- End Preload-->
     <main>
+        <div class="loading">
+            <span>
+                <span style="--order:1;"></span>
+                <span style="--order:2;"></span>
+                <span style="--order:3;"></span>
+                <span style="--order:4;"></span>
+                <span style="--order:5;"></span>
+                <span style="--order:6;"></span>
+                <span style="--order:7;"></span>
+                <span style="--order:8;"></span>
+                <span style="--order:9;"></span>
+                <span style="--order:10;"></span>
+            </span>
+            <p>جاري الاضافة... </p>
+        </div>
         <div class="overlayer"></div>
-        <p id="paragraph">سجل الدخول كمشرف</p>
+        <div class="logged">
+            <p id="paragraph">سجل الدخول كمشرف</p>
+            <ul id="methods">
+                <li onclick="addForm()"> <a href="#">اضف اثر</a></li>
+                <li onclick=""><a href="#">كل الآثار</a></li>
+                <li onclick=""><a href="#">مسح اثر</a></li>
+            </ul>
+        </div>
         <form id="login">
             <input type="text" id="naem">
             <input type="text" id="mail">
@@ -23,32 +58,12 @@
             <input type="submit" onclick="login(event)" value="سجل الدخول">
         </form>
         <p id="error"></p>
+
+
+        <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
+
         <script>
-            let form = document.querySelector('form#login'),
-                name = document.getElementById('naem')
-            if (sessionStorage.loggedIn) {
-                form.remove()
-                document.querySelector('p#paragraph').innerText = `مرحبا بك يا  ${sessionStorage.name}😊`
-                document.getElementById('error').remove()
-            }
-
-            function login(event) {
-                event.preventDefault()
-                let
-                    mail = document.getElementById("mail").value.trim(""),
-                    pass = document.getElementById("passs").value.trim("")
-                name = name.value
-                if (name === "ياسين" && mail === "yaseen.saad.frontend@gmail.com" && pass === "انا مشرف") {
-                    sessionStorage.setItem("loggedIn", true)
-                    sessionStorage.setItem("name", name)
-                    form.remove()
-                    document.querySelector('p#paragraph').innerText = `مرحبا بك يا ${name} 😊`
-                    document.getElementById('error').remove()
-                } else {
-                    document.getElementById('error').innerText = "انت لست مشرف⛔  ";
-                }
-
-            }
 //     const firebaseConfig = {
 //     apiKey: "AIzaSyABZhi1dRA3s1VnaJACrpTy2XJZPRIb23Q",
 //     authDomain: "esp32-b7b1a.firebaseapp.com",
@@ -79,6 +94,8 @@
 //
         </script>
     </main>
+    <script src="./main.js"></script>
+    <script src="./admins-Form.js"></script>
 </body>
 
 </html>
