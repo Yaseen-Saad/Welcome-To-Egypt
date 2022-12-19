@@ -1,5 +1,7 @@
 const nav = document.querySelector('nav');
-let timeout = 2000;
+let timeout = 2000,
+  loading = document.querySelector(
+    '.loading');
 onscroll = () => {
   if (scrollY >= 50) nav.classList.add('active')
   else nav.classList.remove('active')
@@ -38,5 +40,57 @@ onload = () => {
   setTimeout(() => {
     document.querySelector(".preloader").classList.add("loaded")
   }, timeout);
+
+}
+
+function allForm(renderId, ifloading, ifreturn) {
+  let returnn;
+  if (ifreturn) {
+    returnn = document.createElement(
+      'p')
+    returnn.innerText = "العودة↩️";
+    returnn.setAttribute('onclick', "location.reload()");
+    returnn.classList.add('return')
+  }
+  let data;
+  database.ref('allMonuments/')
+    .on(
+      'value',
+      function (snapshot) {
+        data = snapshot.val()
+      })
+  if (ifloading) {
+
+    loading.classList.add('active');
+    loading.children[loading.children.length - 1].innerText = "جاري التحميل..."
+  }
+
+  setTimeout(() => {
+    let showDiv = document.createElement('div');
+    for (const key in data) {
+      if (Object.hasOwnProperty.call(data, key)) {
+        const element = data[key];
+        let article = document.createElement('article'),
+          title = document.createElement('h2'),
+          overlay = document.createElement('div'),
+          subTitle = document.createElement('p');
+        title.innerText = element.title
+        subTitle.innerText = element.p
+        overlay.classList.add('overlayer')
+        article.style.backgroundImage = `url(${element.image})`
+        article.append(overlay, title, subTitle)
+        showDiv.append(article)
+      }
+    }
+    showDiv.classList.add('data')
+    if (ifreturn)
+      document.querySelector(`.container#${renderId}`).append(returnn, showDiv)
+    else
+      document.querySelector(`.container#${renderId}`).append(showDiv)
+    if (ifloading) {
+      loading.classList.remove('active');
+    }
+  }, timeout);
+
 
 }
