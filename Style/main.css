@@ -49,6 +49,7 @@ nav {
     display: flex;
     background-color: transparent;
     width: 100%;
+    padding-bottom: 10px;
     
 }
 .container:has(nav) {
