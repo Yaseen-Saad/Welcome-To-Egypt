@@ -50,14 +50,16 @@ nav {
     background-color: transparent;
     width: 100%;
     padding-bottom: 10px;
-    
+
 }
+
 .container:has(nav) {
     transition: .5s all ease-in-out;
     z-index: 260;
     position: fixed;
 
 }
+
 .container:has(nav.active) {
     background-color: #fff;
 }
@@ -75,11 +77,11 @@ nav.active a {
 nav ul {
     list-style-type: none;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
     margin: 0;
-    padding: 0;
+    padding: 0 30px;
 
 
 
@@ -137,17 +139,100 @@ body .preloader.loaded {
         transform: scale(1.3);
     }
 }
+
 #demo {
     width: 100%;
     height: 100vh;
     position: relative;
     background: #f1f1f1;
-  }
+}
 
-  .stars {
+.stars {
     position: absolute;
     background: #000000;
     z-index: 8;
     width: 10px;
     height: 3px;
-  }
+}
+
+.data {
+    display: grid;
+    gap: 40px;
+    margin: auto;
+    padding: 30px;
+    grid-template-columns: repeat(3, 1fr)
+}
+
+.data article {
+    overflow: clip;
+    position: relative;
+    z-index: 85;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 15px;
+    height: 600px
+}
+
+.data article h2 {
+    position: absolute;
+    font-size: 1.6rem;
+    padding-right: 30px;
+    bottom: 0
+}
+
+.data article p {
+    transition: .5s ease-in-out;
+    position: relative;
+    bottom: 0;
+    width: 80%;
+    font-size: .6rem;
+    margin: 0;
+    padding: 20px;
+    right: -100%;
+    top: 40%;
+    transform: translateY(-50%)
+}
+
+.data article:hover p {
+    right: 10px
+}
+
+@media screen and (max-width:1400px) and (min-width:946px) {
+    .data {
+        grid-template-columns: repeat(2, 1fr)
+    }
+
+    .data article {
+        height: 400px
+    }
+}
+
+@media screen and (max-width:945px) and (min-width:440px) {
+    .data {
+        grid-template-columns: 1fr
+    }
+
+    .data article {
+        height: 400px
+    }
+}
+
+@media screen and (max-width:439px) and (min-width:0px) {
+    .data {
+        grid-template-columns: 1fr
+    }
+
+    .data article {
+        height: 320px
+    }
+
+    .data article h2 {
+        font-size: 1rem
+    }
+
+    .data article p {
+        font-size: .6rem;
+        padding: 0
+    }
+}
