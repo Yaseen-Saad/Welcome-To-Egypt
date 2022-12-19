@@ -13,13 +13,16 @@
 
 <body>
     <!-- Start Nav -->
-    <nav>
-        <ul>
-            <li id="home"><a href="./index.html">المنزل</a></li>
-            <li id="login"><a href="#">سجل كمشرف</a></li>
-            <li id="look"><a href="#">تصفح الآثار</a></li>
-        </ul>
-    </nav>
+    <div class="container">
+        <nav>
+            <ul>
+                <li id="home"><a href="./index.html">المنزل</a></li>
+                <li id="login"><a href="#">سجل كمشرف</a></li>
+                <li id="look"><a href="#">تصفح الآثار</a></li>
+                <!-- <li></li> -->
+            </ul>
+        </nav>
+    </div>
     <!-- End Nav -->
     <!-- Start Preload-->
     <div class="preloader"><img src="images/logotest-removebg-preview.png" />
@@ -47,7 +50,7 @@
             <p id="paragraph">سجل الدخول كمشرف</p>
             <ul id="methods">
                 <li onclick="addForm()"> <a href="#">اضف اثر</a></li>
-                <li onclick=""><a href="#">كل الآثار</a></li>
+                <li onclick="allForm()"><a href="#">كل الآثار</a></li>
                 <li onclick=""><a href="#">مسح اثر</a></li>
             </ul>
         </div>
@@ -59,41 +62,10 @@
         </form>
         <p id="error"></p>
 
-
-        <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
-
-        <script>
-//     const firebaseConfig = {
-//     apiKey: "AIzaSyABZhi1dRA3s1VnaJACrpTy2XJZPRIb23Q",
-//     authDomain: "esp32-b7b1a.firebaseapp.com",
-//     databaseURL: "https://esp32-b7b1a-default-rtdb.firebaseio.com",
-//     projectId: "esp32-b7b1a",
-//     storageBucket: "esp32-b7b1a.appspot.com",
-//     messagingSenderId: "629790213722",
-//     appId: "1:629790213722:web:7eec5c2481fad8f384ba63"
-// };
-// // Initialize Firebase
-// firebase.initializeApp(firebaseConfig);
-// // Set database letiable
-// let database = firebase.database()
-
-// let data = [];
-//         database.ref('users/').on('value', function (snapshot) {
-//             data = snapshot.val()
-
-//         })
-//         let id = data.length
-//         database.ref('users/' + id).set({
-//             username: name,
-//             password: pass,
-//             "e-mail": mail,
-//         })
-//         alert('Welcome')
-
-//
-        </script>
+        <div class="container" id="gg"></div>
     </main>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
     <script src="./main.js"></script>
     <script src="./admins-Form.js"></script>
 </body>
