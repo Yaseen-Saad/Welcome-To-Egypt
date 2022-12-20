@@ -259,7 +259,6 @@ function goToHome() {
 
 function goToAll() {
     let back;
-
     database.ref(`allMonuments/`).on("value", function (e) {
         if (!back) {
             back = e.val()
@@ -303,7 +302,7 @@ function goToAll() {
             document.getElementById('homeAllDelete').innerHTML = ""
             document.getElementById('homeAllDelete').append(final)
             document.getElementById('homeAllDelete').innerHTML += "<p id='undo'>العودة الي اخر تعديل</p>"
-            articleClick('allMonuments')
+            articleClick('allMonuments', "home")
             n = document.createElement("p");
             n.innerText = "العودة↩️";
             n.setAttribute("onclick", "location.reload()");
@@ -313,13 +312,18 @@ function goToAll() {
         }
     }, timeout);
 }
-function articleClick(pos) {
+function articleClick(pos, pos2) {
     Array(...document.querySelectorAll('article:has(div)'))
         .map(ele => {
             ele.onclick = () => {
                 alert('هذا الاثر سيحذف نهائيا')
                 loading.classList.add('active')
-                database.ref(`${pos}/` + ele.getAttribute('data--id')).remove()
+                if (!pos2)
+                    database.ref(`${pos}/` + ele.getAttribute('data--id')).remove()
+                else {
+                    database.ref(`${pos}/` + ele.getAttribute('data--id')).remove()
+                    database.ref(`${pos2}/` + ele.getAttribute('data--id')).remove()
+                }
                 setTimeout(() => {
                     ele.remove()
                     loading.classList.remove('active')

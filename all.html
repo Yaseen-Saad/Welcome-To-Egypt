@@ -8,10 +8,13 @@
     <link rel="shortcut icon" href="https://i.ibb.co/hH7gKpj/logotest-removebg-preview.png" type="image/x-icon">
     <link rel="stylesheet" href="Style/main.css">
     <style>
-        nav a{
+        a {
             color: #000;
         }
+
         main {
+            color: #000;
+            margin-top: 100px;
             background-color: #e8e1d7;
             min-height: 100vh;
         }
@@ -27,23 +30,26 @@
         }
     </style>
     <style>
-        #bgr>div {
-            margin: auto;
+        div.l {
+            padding: 20px;
             display: grid;
-            padding-inline: 30px;
+            border: rgba(0, 0, 0, 0.344) solid 5px;
+            margin-right: 100px;
+            margin-top: 100px;
             grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+            gap: 20px;
         }
 
-        #bgr>div>article {
+        div.l>article {
             display: grid;
             background-color: #fff;
             color: #000;
             font-size: .9rem;
+            height: fit-content;
             grid-template-rows: 300px repeat(3, minmax(auto, max-content));
         }
 
-        #bgr>div>article>* {
+        div.l>article>* {
             width: 100%;
             display: flex;
             padding-right: 20px;
@@ -52,18 +58,18 @@
             padding-inline: 40px;
         }
 
-        #bgr>div>article>*:first-child {
+        div.l>article>*:first-child {
             background-repeat: no-repeat;
             padding: 0;
             background-size: cover;
             background-position: center;
         }
 
-        #bgr>div>article h2 {
+        div.l>article h2 {
             font-size: 1.2em;
         }
 
-        #bgr>div>article p {
+        div.l>article p {
             font-size: .8em;
         }
 
@@ -71,14 +77,16 @@
             width: 30px;
             margin-inline: 10px;
         }
+
         @media (max-width:1100px) {
-            #bgr > div{
-            grid-template-columns: repeat(2, 1fr);
+            div.l {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
+
         @media (max-width:700px) {
-            #bgr > div{
-            grid-template-columns: 1fr;
+            div.l {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -98,14 +106,132 @@
 <div class="preloader"><img src="https://i.ibb.co/hH7gKpj/logotest-removebg-preview.png">
     <h2>مرحبا بك في مصر</h2>
 </div>
-<img style="position: absolute; z-index: 3; width: 100vw;" src="https://i.ibb.co/W6cLNtW/inner-Background.jpg" alt="">
+<img style="position: absolute; z-index: 3; width: 100%;" src="https://i.ibb.co/W6cLNtW/inner-Background.jpg" alt="">
+
 <main>
-    <div class="container" id="bgr">
+    <div class="container">
+        <div class="cont">
+            <div class="r">
+                <p>المحافظة :</p>
+                <ul id="govs">
 
+                </ul>
+            </div>
+            <div class="l">
 
+            </div>
+        </div>
     </div>
+    <!-- <div class="container" id="bgr">  </div> -->
 </main>
 <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
 <script src="./main.js"></script>
-<script>allForm('bgr', false, false, false,"allMonuments")</script>
+<script>
+    let loader = document.querySelector('.preloader')
+    function show(e) {
+        document.querySelectorAll('ul>li>a').forEach(ele => ele.classList.remove('active'))
+        e.target.classList.add('active')
+        loader.classList.remove('loaded')
+        let data, l = document.querySelector('.l')
+        database.ref(`allMonuments/`).on("value", function (e) {
+            data = e.val()
+        })
+        setTimeout(() => {
+            l.innerHTML = ""
+            for (const key in data) {
+                if (Object.hasOwnProperty.call(data, key)) {
+                    const element = data[key];
+                    if (element.pos == e.target.innerText) {
+                        d = document.createElement("article"),
+                            s = document.createElement("h2"),
+                            img = document.createElement("div"),
+                            lo = document.createElement("p"),
+                            m = document.createElement("p");
+                        d.setAttribute('data--t', element.text);
+                        d.setAttribute('data--id', key);
+                        m.classList.add('gg')
+                        s.innerText = element.title;
+                        img.style.backgroundImage = `url(${element.image})`
+                        lo.innerText = element.pos;
+                        m.innerText = element.p;
+                        lo.innerHTML += ` <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 256c-35.3 0-64-28.7-64-64s28.7-64 64-64s64 28.7 64 64s-28.7 64-64 64z" /></svg>`
+                        d.append(img, s, lo, m);
+                        l.append(d);
+                    }
+                    console.log(element)
+                }
+            }
+            loader.classList.add('loaded')
+        }, timeout - 2000);
+    }
+
+</script>
+<style>
+    .l {
+        width: fill-available;
+        width: -webkit-fill-available;
+    }
+
+    .cont {
+        display: flex;
+        width: 100%;
+    }
+
+    a.active{
+        font-weight: 900;
+        font-size: 1.5rem;
+        color: rgba(0, 0, 0, 0.456);
+    }
+
+    ul {
+        width: fit-content;
+        margin: 0;
+    }
+</style>
+<script>
+
+    for (const gov of govs) {
+        let li = document.createElement('li'),
+            a = document.createElement('a')
+        a.innerText = gov
+        a.setAttribute('onclick', "show(event)")
+        li.append(a)
+        document.querySelector('ul#govs').append(li)
+    }
+    loader.classList.remove('loaded')
+    let data, l = document.querySelector('.l')
+    database.ref(`allMonuments/`).on("value", function (e) {
+        data = e.val()
+    })
+    setTimeout(() => {
+        document.querySelector('ul#govs>li:first-child>a').classList.add('active')
+        l.innerHTML = ""
+        for (const key in data) {
+            if (Object.hasOwnProperty.call(data, key)) {
+                const element = data[key];
+                if (element.pos == "القاهرة") {
+                    d = document.createElement("article"),
+                        s = document.createElement("h2"),
+                        img = document.createElement("div"),
+                        lo = document.createElement("p"),
+                        m = document.createElement("p");
+                    d.setAttribute('data--t', element.text);
+                    d.setAttribute('data--id', key);
+                    m.classList.add('gg')
+                    s.innerText = element.title;
+                    img.style.backgroundImage = `url(${element.image})`
+                    lo.innerText = element.pos;
+                    m.innerText = element.p;
+                    lo.innerHTML += ` <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 256c-35.3 0-64-28.7-64-64s28.7-64 64-64s64 28.7 64 64s-28.7 64-64 64z" /></svg>`
+                    d.append(img, s, lo, m);
+                    l.append(d);
+                }
+                console.log(element)
+            }
+        }
+        loader.classList.add('loaded')
+    }, timeout - 2000);
+
+</script>
+<script></script>

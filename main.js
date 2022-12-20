@@ -1,6 +1,36 @@
 const nav = document.querySelector("nav");
 let timeout = 4e3,
-	loading = document.querySelector(".loading");
+	loading = document.querySelector(".loading"),
+	 govs = [
+        "القاهرة",
+        "الجيزة",
+        "الأسكندرية",
+        "الدقهلية",
+        "الشرقية",
+        "المنوفية",
+        "القليوبية",
+        "البحيرة",
+        "الغربية",
+        "بور سعيد",
+        "دمياط",
+        "الإسماعلية",
+        "السويس",
+        "كفر الشيخ",
+        "الفيوم",
+        "بني سويف",
+        "مطروح",
+        "شمال سيناء",
+        "جنوب سيناء",
+        "المنيا",
+        "أسيوط",
+        "سوهاج",
+        "قنا",
+        "البحر الأحمر",
+        "الأقصر",
+        "أسوان",
+        "الواحات",
+        "الوادي الجديد"
+    ]
 onscroll = () => {
 	scrollY >= 50 ? nav.classList.add("active") : nav.classList.remove("active")
 };

@@ -37,6 +37,7 @@ body {
 }
 
 body>:not(p) {
+    top: 0;
     margin-inline: auto
 }
 
@@ -44,6 +45,7 @@ body .preloader {
     position: fixed;
     width: 100vw;
     height: 100vh;
+    top: 0;
     background-color: #e8e1d7;
     display: -webkit-box;
     display: -webkit-flex;
