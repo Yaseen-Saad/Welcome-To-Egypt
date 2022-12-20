@@ -8,7 +8,17 @@ function login(e) {
     name = name.value;
     "admin" == name && "yaseen.saad.frontend@gmail.com" == t && "admin" == r ? (sessionStorage.setItem("loggedIn", !0), sessionStorage.setItem("name", name), form.remove(), document.querySelector("p#paragraph").innerText = `مرحبا بك يا ${name} 😊`, document.querySelector(".logged").classList.add("active"), document.getElementById("error").remove()) : document.getElementById("error").innerText = "انت لست مشرف⛔  "
 }
+function calcLength(event, l) {
+    let limit = document.getElementById('limit')
+    limit.style.color = "#fff"
+    limit.innerText = "متبقي " + (250 - l.length) + " حرف"
+    if (l.length > 249) {
+        limit.style.color = "#ED4F32"
 
+        document.querySelector('#pinput').value = l.split("").splice(0, l.length - 1).join("")
+        limit.innerText = "⚠️ لقد قمت بتخطي الحد"
+    }
+}
 function addForm() {
 
     document.querySelector(".logged").remove();
@@ -52,6 +62,7 @@ function addForm() {
         pl = document.createElement("label"),
         n = document.createElement("input"),
         i = document.createElement("div"),
+        limit = document.createElement("p"),
         o = document.createElement("label"),
         u = document.createElement("label"),
         bL = document.createElement("label"),
@@ -76,6 +87,8 @@ function addForm() {
     c.setAttribute("for", "imageinput");
     bL.setAttribute("for", "textLapel");
     a.setAttribute("onclick", "addMonument(event,document.querySelectorAll('input,textarea,select'))");
+    r.setAttribute("onkeydown", "calcLength(event,this.value)");
+    r.setAttribute("maxlength", "250");
     u.setAttribute("for", "checkbox");
     pl.setAttribute("for", "position");
     s.setAttribute("onclick", "location.reload()");
@@ -88,6 +101,7 @@ function addForm() {
     n.type = "checkbox";
     i.append(n, u);
     t.id = "titleinput";
+    limit.id = "limit";
     p.id = "position"
     b.id = 'textLapel'
     r.id = "pinput";
@@ -99,8 +113,7 @@ function addForm() {
         option.innerText = gov;
         p.append(option)
     }
-
-    e.append(o, t, m, r, bL, b, pl, p, c, l, i, d, a);
+    e.append(o, t, m, r, limit, bL, b, pl, p, c, l, i, d, a);
     document.querySelector("main").append(s, e)
 }
 
@@ -111,7 +124,6 @@ function addMonument(e, t) {
         let r;
         database.ref("allMonuments/").on("value", function (e) {
             r = e.val()
-            console.log(r, Date.now());
         });
 
         loading.classList.add("active");
@@ -148,7 +160,6 @@ function addMonument(e, t) {
                         t[0].value = "";
                         t[1].value = "";
                         t[2].value = "";
-                        t[3].value = "";
                         t[4].value = "";
                     }, timeout)
                 }
@@ -158,7 +169,6 @@ function addMonument(e, t) {
                     t[0].value = "";
                     t[1].value = "";
                     t[2].value = "";
-                    t[3].value = "";
                     t[4].value = "";
                 }
             }
@@ -172,6 +182,153 @@ function addMonument(e, t) {
 
 function allFormAdmin(e) {
     document.querySelector(".logged").remove();
-    allForm("gg", !0, !0, !0);
+    allForm("gg", !0, !0, !0, "allMonuments");
 }
 sessionStorage.loggedIn && (form.remove(), document.querySelector("p#paragraph").innerText = `مرحبا بك يا  ${sessionStorage.name}😊`, document.getElementById("error").remove(), document.querySelector(".logged").classList.add("active")), onload = () => document.querySelector(".preloader").classList.add("loaded");
+
+
+
+
+
+
+function delet() {
+    document.querySelector("#methods").innerHTML = `
+        <li onclick="goToHome()">مسح اثر من المنزل</li>
+        <li onclick="goToAll()">مسح اثر من كل الآثار</li>
+        <p class="return" id="returnDelete" onclick="location.reload()">العودة↩️</p>
+        `
+}
+function goToHome() {
+    let back;
+
+    database.ref(`home/`).on("value", function (e) {
+        if (!back) {
+            back = e.val()
+        }
+    })
+
+    document.querySelector(".logged").remove();
+    allForm('homeAllDelete', true, true, false, "home", true)
+
+    setTimeout(() => {
+        document.getElementById('homeAllDelete').innerHTML += "<p id='undo'>العودة الي اخر تعديل</p>"
+        articleClick('home')
+        console.log(back);
+        undo.onclick = () => {
+            console.log('clicked');
+            document.getElementById('homeAllDelete').innerHTML += "<p id='undo'>العودة الي اخر تعديل</p>"
+            for (let i = 0; i < Object.keys(back).length; i++) {
+                let addd = back[i]
+                database.ref(`home/${i}/`).set({
+                    addd
+                })
+            } let final = document.createElement('div');
+            for (let l in back)
+                if (Object.hasOwnProperty.call(back, l)) {
+                    let i = back[l],
+                        d = document.createElement("article"),
+                        s = document.createElement("h2"),
+                        img = document.createElement("div"),
+                        lo = document.createElement("p");
+                    m = document.createElement("p");
+                    d.setAttribute('data--t', i.text);
+                    d.setAttribute('data--id', l);
+                    m.classList.add('gg')
+                    s.innerText = i.title;
+                    lo.innerText = i.pos;
+                    m.innerText = i.p;
+                    img.style.backgroundImage = `url(${i.image})`
+                    lo.innerHTML += ` <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 256c-35.3 0-64-28.7-64-64s28.7-64 64-64s64 28.7 64 64s-28.7 64-64 64z" /></svg>`
+                    d.append(img, s, lo, m);
+                    final.append(d);
+                }
+            document.getElementById('homeAllDelete').innerHTML = ""
+            document.getElementById('homeAllDelete').append(final)
+            document.getElementById('homeAllDelete').innerHTML += "<p id='undo'>العودة الي اخر تعديل</p>"
+            articleClick('home')
+            n = document.createElement("p");
+            n.innerText = "العودة↩️";
+            n.setAttribute("onclick", "location.reload()");
+            n.classList.add("return")
+            document.getElementById('homeAllDelete').prepend(n)
+
+        }
+    }, timeout);
+}
+
+
+function goToAll() {
+    let back;
+
+    database.ref(`allMonuments/`).on("value", function (e) {
+        if (!back) {
+            back = e.val()
+        }
+    })
+    document.querySelector(".logged").remove();
+    allForm('homeAllDelete', true, true, false, "allMonuments", true)
+
+    setTimeout(() => {
+        document.getElementById('homeAllDelete').innerHTML += "<p id='undo'>العودة الي اخر تعديل</p>"
+        articleClick('allMonuments')
+        console.log(back);
+        undo.onclick = () => {
+            console.log('clicked');
+            document.getElementById('homeAllDelete').innerHTML += "<p id='undo'>العودة الي اخر تعديل</p>"
+            for (let i = 0; i < Object.keys(back).length; i++) {
+                let addd = back[i]
+                database.ref(`allMonuments/${i}/`).set({
+                    addd
+                })
+            } let final = document.createElement('div');
+            for (let l in back)
+                if (Object.hasOwnProperty.call(back, l)) {
+                    let i = back[l],
+                        d = document.createElement("article"),
+                        s = document.createElement("h2"),
+                        img = document.createElement("div"),
+                        lo = document.createElement("p");
+                    m = document.createElement("p");
+                    d.setAttribute('data--t', i.text);
+                    d.setAttribute('data--id', l);
+                    m.classList.add('gg')
+                    s.innerText = i.title;
+                    lo.innerText = i.pos;
+                    m.innerText = i.p;
+                    img.style.backgroundImage = `url(${i.image})`
+                    lo.innerHTML += ` <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 256c-35.3 0-64-28.7-64-64s28.7-64 64-64s64 28.7 64 64s-28.7 64-64 64z" /></svg>`
+                    d.append(img, s, lo, m);
+                    final.append(d);
+                }
+            document.getElementById('homeAllDelete').innerHTML = ""
+            document.getElementById('homeAllDelete').append(final)
+            document.getElementById('homeAllDelete').innerHTML += "<p id='undo'>العودة الي اخر تعديل</p>"
+            articleClick('allMonuments')
+            n = document.createElement("p");
+            n.innerText = "العودة↩️";
+            n.setAttribute("onclick", "location.reload()");
+            n.classList.add("return")
+            document.getElementById('homeAllDelete').prepend(n)
+
+        }
+    }, timeout);
+}
+function articleClick(pos) {
+    Array(...document.querySelectorAll('article:has(div)'))
+        .map(ele => {
+            ele.onclick = () => {
+                alert('هذا الاثر سيحذف نهائيا')
+                loading.classList.add('active')
+                database.ref(`${pos}/` + ele.getAttribute('data--id')).remove()
+                setTimeout(() => {
+                    ele.remove()
+                    loading.classList.remove('active')
+                }, timeout - 2000);
+
+            }
+        })
+}
+
+
+
+

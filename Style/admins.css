@@ -44,7 +44,8 @@ input,
 label,
 textarea,
 select,
-p {
+p,
+div:not(.overlayer) {
     z-index: 6
 }
 
@@ -83,7 +84,7 @@ p {
     align-items: center
 }
 
-p:last-of-type:not(:first-of-type) {
+p:last-of-type:not(:first-of-type):not(.not-error) {
     color: #e14441
 }
 
@@ -91,6 +92,9 @@ p:last-of-type:not(:first-of-type) {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     position: fixed;
     box-sizing: content-box;
     margin: auto;
@@ -129,7 +133,7 @@ p:last-of-type:not(:first-of-type) {
 .logged.active #methods {
     justify-content: center;
     align-items: center;
-    display: block;
+    display: flex;
     margin: 30px 0 0;
     padding: 0;
     flex-direction: column;
@@ -142,8 +146,8 @@ p:last-of-type:not(:first-of-type) {
     text-align: center;
     padding: 5px 10px;
     width: 70%;
-    min-width: 150px;
-    max-width: 350px;
+    min-width: 250px;
+    max-width: 600px;
     border-radius: 20px;
     transition: .5s;
     margin: 5px;
@@ -225,8 +229,93 @@ textarea {
     max-width: 300px;
     height: 100px;
     min-height: 100px;
+    min-width: 100%;
 }
 
-label:not([for = checkbox]) {
+label:not([for=checkbox]) {
     margin-bottom: -30px;
+}
+
+form p#limit {
+    margin-block: -30px -20px;
+}
+
+#returnDelete {
+    margin-top: 0px;
+}
+
+#homeAllDelete {
+    display: flex;
+    flex-direction: column;
+}
+
+#homeAllDelete>div {
+    margin: auto;
+    display: grid;
+    padding-inline: 30px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+#homeAllDelete>div>article {
+    display: grid;
+    background-color: #fff;
+    color: #000;
+    font-size: .9rem;
+    padding-bottom: 20px;
+    grid-template-rows: 300px repeat(3, minmax(auto, max-content));
+}
+
+#homeAllDelete>div>article>* {
+    width: 100%;
+    display: flex;
+    padding-right: 20px;
+    justify-content: flex-start;
+    align-items: center;
+    padding-inline: 40px;
+}
+
+#homeAllDelete>div>article>*:first-child {
+    background-repeat: no-repeat;
+    padding: 0;
+    background-size: cover;
+    background-position: center;
+}
+
+#homeAllDelete>div>article h2 {
+    font-size: 1.2em;
+}
+
+#homeAllDelete>div>article p {
+    font-size: .8em;
+}
+
+svg {
+    width: 30px;
+    margin-inline: 10px;
+}
+
+@media (max-width:1100px) {
+    #homeAllDelete>div {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width:700px) {
+    #homeAllDelete>div {
+        grid-template-columns: 1fr;
+    }
+}
+
+#undo {
+    margin-block: 20px;
+    color: #fff;
+}
+
+.gg {
+    text-align: start;
+    color: #000 !important;
+}
+.redWarning{
+    color: #ED4F32;
 }
