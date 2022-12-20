@@ -1,0 +1,64 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Document
+  link(rel='shortcut icon' href='https://i.ibb.co/hH7gKpj/logotest-removebg-preview.png' type='image/x-icon')
+  link(rel='stylesheet' href='./Style/admins.css')
+  link(rel='stylesheet' href='./Style/main.css')
+  link(rel='preconnect' href='https://fonts.googleapis.com')
+  link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin='')
+  link(href='https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100;300;500;800&display=swap' rel='stylesheet')
+// Start Nav
+.container
+  nav
+    ul
+      li#home
+        a(href='./index.html') &#x627;&#x644;&#x645;&#x646;&#x632;&#x644;
+      li#login
+        a(href='#') &#x633;&#x62C;&#x644; &#x643;&#x645;&#x634;&#x631;&#x641;
+      li#look
+        a(href='./all.html') &#x62A;&#x635;&#x641;&#x62D; &#x627;&#x644;&#x622;&#x62B;&#x627;&#x631;
+      // <li></li>
+// End Nav
+// Start Preload
+.preloader
+  img(src='https://i.ibb.co/hH7gKpj/logotest-removebg-preview.png')
+  h2 &#x645;&#x631;&#x62D;&#x628;&#x627; &#x628;&#x643; &#x641;&#x64A; &#x645;&#x635;&#x631;
+// End Preload
+main
+  .loading
+    span
+      span(style='--order:1;')
+      span(style='--order:2;')
+      span(style='--order:3;')
+      span(style='--order:4;')
+      span(style='--order:5;')
+      span(style='--order:6;')
+      span(style='--order:7;')
+      span(style='--order:8;')
+      span(style='--order:9;')
+      span(style='--order:10;')
+    p &#x62C;&#x627;&#x631;&#x64A; &#x627;&#x644;&#x627;&#x636;&#x627;&#x641;&#x629;... 
+  .overlayer
+  .logged
+    p#paragraph &#x633;&#x62C;&#x644; &#x627;&#x644;&#x62F;&#x62E;&#x648;&#x644; &#x643;&#x645;&#x634;&#x631;&#x641;
+    ul#methods
+      li(onclick='addForm()')
+        a(href='#') &#x627;&#x636;&#x641; &#x627;&#x62B;&#x631;
+      li(onclick='allFormAdmin()')
+        a(href='#') &#x643;&#x644; &#x627;&#x644;&#x622;&#x62B;&#x627;&#x631;
+      li(onclick='')
+        a(href='#') &#x645;&#x633;&#x62D; &#x627;&#x62B;&#x631;
+  form#login
+    input#naem(type='text')
+    input#mail(type='text')
+    input#passs(type='password')
+    input(type='submit' onclick='login(event)' value='سجل الدخول')
+  p#error
+  #gg.container
+script(src='https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js')
+script(src='https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js')
+script(src='./main.js')
+script(src='./admins-Form.js')
