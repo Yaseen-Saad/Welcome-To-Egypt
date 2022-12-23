@@ -55,6 +55,7 @@ div.l > article {
   color: #000;
   font-size: 0.9rem;
   height: fit-content;
+  border: 1px solid black;
   grid-template-rows: 300px repeat(3, minmax(auto, max-content));
 }
 
