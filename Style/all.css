@@ -137,5 +137,26 @@ ul#govs {
 }
 .classList div div {
   width: 100%;
-  height: 300px;
+  height: 600px;
+  background-size: cover;
+  background-position: center;
+}
+.classList > div:first-child {
+  width: max-content;
+  margin-right: 20px;
+  margin-left: 50px;
+}
+.classList > div:last-child {
+  border: 1px solid #0004;
+  padding: 30px;
+  margin-left: 10px;
+  width: -webkit-fill-available;
+  width: fill-available;
+}
+
+@media (max-width: 700px) {
+
+  .classList {
+    flex-direction: column;
+  }
 }
