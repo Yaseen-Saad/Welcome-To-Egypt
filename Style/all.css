@@ -18,6 +18,12 @@ ul {
   width: fit-content;
   margin: 0;
 }
+body {
+  background-image: url(https://i.ibb.co/hH7gKpj/logotest-removebg-preview.png);
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+}
 a {
   color: #000 !important;
 }
@@ -89,6 +95,7 @@ svg {
 }
 div.l {
   margin-left: 30px;
+  margin-bottom: 20px;
 }
 ul#govs {
   margin-right: 30px;

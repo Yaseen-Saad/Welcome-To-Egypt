@@ -10,6 +10,7 @@ for (const gov of govs) {
 }
 
 function show(e) {
+  let xx = 0;
   if (!e.target.classList.contains("active")) {
     document
       .querySelectorAll("ul>li>a")
@@ -23,7 +24,6 @@ function show(e) {
     });
     setTimeout(() => {
       l.innerHTML = "";
-      let xx;
       for (const key in data) {
         if (Object.hasOwnProperty.call(data, key)) {
           const element = data[key];
@@ -52,11 +52,10 @@ function show(e) {
           }
         }
       }
-      if (xx ==0){
-      l.innerHTML = "لا يوجد آثار في " + e.target.innerText;
-
+      if (xx == 0) {
+        l.innerHTML = "لا يوجد آثار في محافظة " + e.target.innerText;
       }
-       loader.classList.add("loaded");
+      loader.classList.add("loaded");
     }, timeout - 2000);
   }
 }
