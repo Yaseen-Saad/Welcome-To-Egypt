@@ -213,9 +213,7 @@ function goToHome() {
     setTimeout(() => {
         document.getElementById('homeAllDelete').innerHTML += "<p id='undo'>العودة الي اخر تعديل</p>"
         articleClick('home')
-        console.log(back);
         undo.onclick = () => {
-            console.log('clicked');
             document.getElementById('homeAllDelete').innerHTML += "<p id='undo'>العودة الي اخر تعديل</p>"
             for (let i = 0; i < Object.keys(back).length; i++) {
                 let addd = back[i]
@@ -270,9 +268,7 @@ function goToAll() {
     setTimeout(() => {
         document.getElementById('homeAllDelete').innerHTML += "<p id='undo'>العودة الي اخر تعديل</p>"
         articleClick('allMonuments')
-        console.log(back);
         undo.onclick = () => {
-            console.log('clicked');
             document.getElementById('homeAllDelete').innerHTML += "<p id='undo'>العودة الي اخر تعديل</p>"
             for (let i = 0; i < Object.keys(back).length; i++) {
                 let addd = back[i]

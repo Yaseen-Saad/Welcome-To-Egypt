@@ -10,8 +10,6 @@
 
 a.active {
   font-weight: 900;
-  font-size: 1.5rem;
-  color: rgba(0, 0, 0, 0.456);
 }
 
 ul {
@@ -25,7 +23,7 @@ a {
 main {
   color: #000;
   margin-top: 100px;
-  background-color: #e8e1d7;
+  background-color: #fff;
   min-height: 100vh;
 }
 
@@ -131,6 +129,24 @@ ul#govs {
     min-width: 300px;
     padding: 0 !important;
   }
+  ul#govs {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  ul#govs > li {
+    width: max-content;
+    padding: 10px;
+    background-color: rgba(54, 54, 54, 0.644);
+    border-radius: 10px;
+    margin: 5px 10px;
+  }
+  ul#govs > li > a {
+    color: #e8e1d7 !important;
+  }
+}
+ul#govs > li{
+  cursor: pointer;
 }
 .classList {
   display: flex;
@@ -149,14 +165,17 @@ ul#govs {
 .classList > div:last-child {
   border: 1px solid #0004;
   padding: 30px;
+  font-size: 0.78rem;
   margin-left: 10px;
   width: -webkit-fill-available;
   width: fill-available;
 }
-
 @media (max-width: 700px) {
-
   .classList {
     flex-direction: column;
   }
+}
+
+li:has(a.active) {
+  background-color: #3f8353 !important;
 }

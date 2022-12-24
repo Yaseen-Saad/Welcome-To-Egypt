@@ -12,7 +12,6 @@ function getDataForHomePage() {
             element = e.val()[i]
             t.push(element)
         }
-        console.log(t);
             for (let a in t)
         if (Object.hasOwnProperty.call(t, a)) {
             let r = t[a];

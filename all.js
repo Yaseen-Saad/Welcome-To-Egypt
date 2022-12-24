@@ -23,10 +23,12 @@ function show(e) {
     });
     setTimeout(() => {
       l.innerHTML = "";
+      let xx;
       for (const key in data) {
         if (Object.hasOwnProperty.call(data, key)) {
           const element = data[key];
           if (element.pos == e.target.innerText) {
+            xx++;
             let d = document.createElement("article"),
               s = document.createElement("h2"),
               img = document.createElement("div"),
@@ -50,7 +52,11 @@ function show(e) {
           }
         }
       }
-      loader.classList.add("loaded");
+      if (xx ==0){
+      l.innerHTML = "لا يوجد آثار في " + e.target.innerText;
+
+      }
+       loader.classList.add("loaded");
     }, timeout - 2000);
   }
 }
@@ -60,7 +66,14 @@ onload = () => {
 loader.classList.remove("loaded");
 
 function showMore(e) {
-  let element = e.target.tagName == "article" ? e.target : e.target.parentNode;
+  let element =
+    e.target.tagName == "article"
+      ? e.target
+      : e.target.tagName == "svg"
+      ? e.target.parentNode.parentNode
+      : e.target.tagName == "path"
+      ? e.target.parentNode.parentNode.parentNode
+      : e.target.parentNode;
   document.querySelector(".cont").style.display = "none";
   let elementData = document.createElement("div");
   let elementName = document.createElement("h2");
@@ -69,27 +82,24 @@ function showMore(e) {
   let elemen = document.createElement("div");
   let elem = document.createElement("div");
   let elementLocation = document.createElement("p");
+  let back = document.createElement("a");
   [
     elementImage.style,
     elementName.innerText,
     elementLocation.innerHTML,
     elementText,
+    back.innerText,
   ] = [
     element.children[0].getAttribute("style"),
     element.children[1].innerText,
     element.children[2].innerHTML,
     element.getAttribute("data--t"),
+    "العودة↩️",
   ];
+  back.setAttribute("onclick", "location.reload()");
   elementData.classList.add("classList");
-  elemen.append(elementName, elementLocation);
+  elemen.append(back, elementName, elementLocation);
   elem.append(elementImage, elementText);
   elementData.append(elemen, elem);
   document.querySelector("main .container").append(elementData);
-  console.log(
-    elementData,
-    elementImage,
-    elementName,
-    elementText,
-    elementLocation
-  );
 }
