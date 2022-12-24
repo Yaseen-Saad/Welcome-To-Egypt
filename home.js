@@ -5,13 +5,9 @@ function getDataForHomePage() {
     database.ref("home/").on("value", function (e) {
         let t=[];
         for (let i = 0; i < e.val().length; i++) {
-            let element;
-            if(e.val()[i].addd)
-             element = e.val()[i].addd;
-            else 
-            element = e.val()[i]
-            t.push(element)
+            t.push(e.val()[i])
         }
+        console.log(t);
             for (let a in t)
         if (Object.hasOwnProperty.call(t, a)) {
             let r = t[a];
@@ -33,4 +29,3 @@ function getDataForHomePageLanding() {
 window.onresize = resize;
 getDataForHomePage();
 getDataForHomePageLanding();
-  
