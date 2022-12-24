@@ -10,6 +10,8 @@
 
 a.active {
   font-weight: 900;
+  font-size: 1.5rem;
+  color: rgba(0, 0, 0, 0.456);
 }
 
 ul {
@@ -144,9 +146,10 @@ ul#govs {
   ul#govs > li > a {
     color: #e8e1d7 !important;
   }
-}
-ul#govs > li{
-  cursor: pointer;
+  li:has(a.active) {
+    font-size: 1rem !important;
+    background-color: #3f8353 !important;
+  }
 }
 .classList {
   display: flex;
@@ -174,8 +177,4 @@ ul#govs > li{
   .classList {
     flex-direction: column;
   }
-}
-
-li:has(a.active) {
-  background-color: #3f8353 !important;
 }
