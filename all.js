@@ -101,4 +101,5 @@ function showMore(e) {
   elem.append(elementImage, elementText);
   elementData.append(elemen, elem);
   document.querySelector("main .container").append(elementData);
+  scrollTo({ top: 0, behavior: "smooth" });
 }
