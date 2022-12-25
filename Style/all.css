@@ -87,6 +87,7 @@ div.l > article > * {
   display: flex;
   padding-right: 20px;
   -webkit-box-pack: start;
+  margin-inline:20px;
   -ms-flex-pack: start;
   justify-content: flex-start;
   -webkit-box-align: center;
