@@ -66,7 +66,7 @@ loader.classList.remove("loaded");
 
 function showMore(e) {
   let element =
-    e.target.tagName == "article"
+    e.target.tagName == "ARTICLE"
       ? e.target
       : e.target.tagName == "svg"
       ? e.target.parentNode.parentNode
