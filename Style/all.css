@@ -77,6 +77,7 @@ div.l > article {
   height: -moz-fit-content;
   height: fit-content;
   border: 1px solid black;
+  margin-inline:20px;
   grid-template-rows: 300px repeat(3, minmax(auto, max-content));
 }
 
@@ -87,7 +88,6 @@ div.l > article > * {
   display: flex;
   padding-right: 20px;
   -webkit-box-pack: start;
-  margin-inline:20px;
   -ms-flex-pack: start;
   justify-content: flex-start;
   -webkit-box-align: center;
