@@ -95,5 +95,5 @@ function showMore(e) {
       loader.classList.add('loaded')
    document.querySelector("ul#govs li:nth-child(1) a").click();
 
-    }, 10000);
+    }, 1000);
 }; 
