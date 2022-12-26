@@ -46,7 +46,10 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 let database = firebase.database();
-
+let data;
+    database.ref(`allMonuments/`).on("value", function (e) {
+      data = e.val();
+    });
 function allForm(e, t, a, z, from,xxx) {
 	let n;
 	a && ((n = document.createElement("p")).innerText = "العودة↩️", n.setAttribute("onclick", "location.reload()"), n.classList.add("return"));
