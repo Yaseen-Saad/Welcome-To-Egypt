@@ -9,7 +9,7 @@ for (const gov of govs) {
   document.querySelector("ul#govs").append(li);
 }
 
-function async show(e) {
+async function show(e) {
   let xx = 0;
   if (!e.target.classList.contains("active")) {
     document
