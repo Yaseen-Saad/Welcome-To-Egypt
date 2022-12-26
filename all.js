@@ -13,11 +13,7 @@ async function show(e) {
   if (!e.target.classList.contains("active")) {
     document.querySelectorAll("ul>li>a").forEach((ele) => ele.classList.remove("active"));
     e.target.classList.add("active");
-    let data,
-      l = document.querySelector(".l");
-    await database.ref(`allMonuments/`).on("value", function (e) {
-      data = e.val();
-    });
+    let l = document.querySelector(".l");
       l.innerHTML = "";
       for (const key in data) {
         if (Object.hasOwnProperty.call(data, key)) {
