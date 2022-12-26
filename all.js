@@ -9,7 +9,7 @@ for (const gov of govs) {
   document.querySelector("ul#govs").append(li);
 }
 
-function show(e) {
+function async show(e) {
   let xx = 0;
   if (!e.target.classList.contains("active")) {
     document
@@ -19,10 +19,9 @@ function show(e) {
     loader.classList.remove("loaded");
     let data,
       l = document.querySelector(".l");
-    database.ref(`allMonuments/`).on("value", function (e) {
+    await database.ref(`allMonuments/`).on("value", function (e) {
       data = e.val();
     });
-    setTimeout(() => {
       l.innerHTML = "";
       for (const key in data) {
         if (Object.hasOwnProperty.call(data, key)) {
@@ -56,7 +55,6 @@ function show(e) {
         l.innerHTML = "لا يوجد آثار في محافظة " + e.target.innerText;
       }
       loader.classList.add("loaded");
-    }, timeout - 2000);
   }
 }
 onload = () => {
