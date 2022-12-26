@@ -8,15 +8,11 @@ for (const gov of govs) {
   li.append(a);
   document.querySelector("ul#govs").append(li);
 }
-
 async function show(e) {
   let xx = 0;
   if (!e.target.classList.contains("active")) {
-    document
-      .querySelectorAll("ul>li>a")
-      .forEach((ele) => ele.classList.remove("active"));
+    document.querySelectorAll("ul>li>a").forEach((ele) => ele.classList.remove("active"));
     e.target.classList.add("active");
-    loader.classList.remove("loaded");
     let data,
       l = document.querySelector(".l");
     await database.ref(`allMonuments/`).on("value", function (e) {
@@ -56,13 +52,8 @@ async function show(e) {
       if (xx == 0) {
         l.innerHTML = "لا يوجد آثار في محافظة " + e.target.innerText;
       }
-      loader.classList.add("loaded");
-  }
 }
-onload = () => {
-  document.querySelector("ul#govs li:first-of-type a").click();
-};
-loader.classList.remove("loaded");
+}
 
 function showMore(e) {
   let element =
@@ -102,4 +93,8 @@ function showMore(e) {
   elementData.append(elemen, elem);
   document.querySelector("main .container").append(elementData);
   scrollTo({ top: 0, behavior: "smooth" });
-}
+}  
+onload = () => {
+    loader.classList.add('loaded')
+  document.querySelector("ul#govs li:first-of-type a").click();
+};
