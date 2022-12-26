@@ -51,6 +51,8 @@ async function show(e) {
           }
         }
       }
+      let topp= l.offsetTop;
+      scrollTo({top:topp,behavior:'smooth'})
       if (xx == 0) {
         l.innerHTML = "لا يوجد آثار في محافظة " + e.target.innerText;
       }
