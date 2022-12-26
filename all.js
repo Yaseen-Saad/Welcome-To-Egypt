@@ -89,8 +89,11 @@ function showMore(e) {
   elementData.append(elemen, elem);
   document.querySelector("main .container").append(elementData);
   scrollTo({ top: 0, behavior: "smooth" });
-}  
-onload = () => {
-    loader.classList.add('loaded')
-  document.querySelector("ul#govs li:first-of-type a").click();
-};
+}
+ onload = () => {
+    setTimeout(function() {
+      loader.classList.add('loaded')
+   document.querySelector("ul#govs li:nth-child(1) a").click();
+
+    }, 1000);
+}; 
