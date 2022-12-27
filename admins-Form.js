@@ -1,18 +1,14 @@
 let form = document.querySelector("form#login");
 function login(e) {
   e.preventDefault();
-  let nn = document.getElementById("naem");
   let t = document.getElementById("mail").value.trim(""),
     r = document.getElementById("passs").value.trim("");
-  console.log(nn);
-  nn = nn.value;
-  "admin" == nn && "yaseen.saad.frontend@gmail.com" == t && "admin" == r
+   "yaseen.saad.frontend@gmail.com" == t && "admin" == r
     ? (sessionStorage.setItem("loggedIn", !0),
-      sessionStorage.setItem("nn", nn),
       form.remove(),
       (document.querySelector(
         "p#paragraph"
-      ).innerText = `مرحبا بك يا ${nn} 😊`),
+      ).innerText = `مرحبا بك 😊`),
       document.querySelector(".logged").classList.add("active"),
       document.getElementById("error").remove())
     : (document.getElementById("error").innerText = "انت لست مشرف⛔  ");
@@ -35,36 +31,6 @@ function calcLength(event, l) {
 function addForm() {
   document.querySelector(".logged").remove();
   let e = document.createElement("form"),
-    egypt = [
-      "القاهرة",
-      "الجيزة",
-      "الأسكندرية",
-      "الدقهلية",
-      "الشرقية",
-      "المنوفية",
-      "القليوبية",
-      "البحيرة",
-      "الغربية",
-      "بور سعيد",
-      "دمياط",
-      "الإسماعلية",
-      "السويس",
-      "كفر الشيخ",
-      "الفيوم",
-      "بني سويف",
-      "مطروح",
-      "شمال سيناء",
-      "جنوب سيناء",
-      "المنيا",
-      "أسيوط",
-      "سوهاج",
-      "قنا",
-      "البحر الأحمر",
-      "الأقصر",
-      "أسوان",
-      "الواحات",
-      "الوادي الجديد",
-    ],
     t = document.createElement("input"),
     r = document.createElement("input"),
     l = document.createElement("input"),
@@ -123,7 +89,7 @@ function addForm() {
   l.id = "imageinput";
   n.id = "checkbox";
   // p pl
-  for (const gov of egypt) {
+  for (const gov of govs) {
     let option = document.createElement("option");
     option.innerText = gov;
     p.append(option);
