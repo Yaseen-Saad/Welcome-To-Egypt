@@ -24,6 +24,9 @@ nav ul {
 }
 nav p {
   width: 50%;
+  -webkit-transition: 0.2s ease-in-out;
+  -o-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
 }
 .container,
 .overlayer,
@@ -182,6 +185,9 @@ nav ul {
 nav.active a {
   color: #000;
 }
+nav.active p {
+  color: #000;
+}
 .stars {
   background: #000;
   z-index: 8;
@@ -235,6 +241,9 @@ nav.active a {
   .galary article {
     height: 400px;
   }
+  .galary article h2{
+    font-size: 1rem;
+  }
 }
 @media screen and (max-width: 945px) and (min-width: 540px) {
   .galary {
@@ -244,8 +253,8 @@ nav.active a {
   .galary article {
     height: 400px;
   }
-  nav p{
- font-size: .8rem;
+  nav p {
+    font-size: 0.8rem;
   }
 }
 @media screen and (max-width: 539px) and (min-width: 0px) {
@@ -257,17 +266,17 @@ nav.active a {
     height: 320px;
   }
   .galary article h2 {
-    font-size: .8rem;
+    font-size: 0.8rem;
   }
   .galary article p {
-    font-size: .4rem;
+    font-size: 0.4rem;
     padding: 0;
     line-height: 20px;
   }
-  nav p{
+  nav p {
     display: none;
   }
-  nav ul{
+  nav ul {
     padding-inline: 10px;
     width: 100%;
   }
