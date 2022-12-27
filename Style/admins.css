@@ -108,7 +108,7 @@ label {
   align-items: center;
   margin: 0;
 }
-p:not(.ccc):not(+h2) {
+p:not(.ccc):not(+ h2) {
   margin: 0 auto;
   font-size: 1rem;
   text-align: center;

@@ -3,12 +3,10 @@ function login(e) {
   e.preventDefault();
   let t = document.getElementById("mail").value.trim(""),
     r = document.getElementById("passs").value.trim("");
-   "yaseen.saad.frontend@gmail.com" == t && "admin" == r
+  "yaseen.saad.frontend@gmail.com" == t && "admin" == r
     ? (sessionStorage.setItem("loggedIn", !0),
       form.remove(),
-      (document.querySelector(
-        "p#paragraph"
-      ).innerText = `مرحبا بك 😊`),
+      (document.querySelector("p#paragraph").innerText = `مرحبا بك 😊`),
       document.querySelector(".logged").classList.add("active"),
       document.getElementById("error").remove())
     : (document.getElementById("error").innerText = "انت لست مشرف⛔  ");
@@ -103,7 +101,7 @@ function addMonument(e, t) {
   if (
     t[0].value.trim() &&
     t[1].value.trim() &&
-    t[5].value.trim() &&
+    t[4].value.trim() &&
     t[2].value.trim()
   ) {
     document.querySelector(".addError").innerText = "";
@@ -134,11 +132,12 @@ function addMonument(e, t) {
           image: t[4].value,
         });
         if (t[5].checked) {
+          let xxxx;
           database.ref("home/").on("value", function (e) {
-            r = e.val();
+            xxxx = e.val();
           });
           setTimeout(() => {
-            database.ref("home/" + Object.keys(r).length + "/").set({
+            database.ref("home/" + Object.keys(xxxx).length + "/").set({
               title: t[0].value,
               p: t[1].value,
               text: t[2].value,
@@ -176,9 +175,7 @@ function allFormAdmin(e) {
 }
 sessionStorage.loggedIn &&
   (form.remove(),
-  (document.querySelector(
-    "p#paragraph"
-  ).innerText = `مرحبا بك يا  ${sessionStorage.nn}😊`),
+  (document.querySelector("p#paragraph").innerText = `مرحبا بك  😊`),
   document.getElementById("error").remove(),
   document.querySelector(".logged").classList.add("active")),
   (onload = () => document.querySelector(".preloader").classList.add("loaded"));
@@ -190,122 +187,23 @@ function delet() {
         <p class="return" id="returnDelete" onclick="location.reload()">العودة↩️</p>
         `;
 }
-function goToHome() {
-  let back;
-
-  database.ref(`home/`).on("value", function (e) {
-    if (!back) {
-      back = e.val();
-    }
-  });
-
-  document.querySelector(".logged").remove();
-  allForm("homeAllDelete", true, true, false, "home", true);
-
+async function goToHome() {
+  await allForm("homeAllDelete", true, true, false, "home", true);
   setTimeout(() => {
-    document.getElementById("homeAllDelete").innerHTML +=
-      "<p id='undo'>العودة الي اخر تعديل</p>";
+    document.querySelector(".logged").remove();
     articleClick("home");
-    undo.onclick = () => {
-      document.getElementById("homeAllDelete").innerHTML +=
-        "<p id='undo'>العودة الي اخر تعديل</p>";
-      for (let i = 0; i < Object.keys(back).length; i++) {
-        let addd = back[i];
-        database.ref(`home/${i}/`).set({
-          addd,
-        });
-      }
-      let final = document.createElement("div");
-      for (let l in back)
-        if (Object.hasOwnProperty.call(back, l)) {
-          let i = back[l],
-            d = document.createElement("article"),
-            s = document.createElement("h2"),
-            img = document.createElement("div"),
-            lo = document.createElement("p");
-          m = document.createElement("p");
-          d.setAttribute("data--t", i.text);
-          d.setAttribute("data--id", l);
-          m.classList.add("gg");
-          s.innerText = i.title;
-          lo.innerText = i.pos;
-          m.innerText = i.p;
-          img.style.backgroundImage = `url(${i.image})`;
-          lo.innerHTML += ` <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 256c-35.3 0-64-28.7-64-64s28.7-64 64-64s64 28.7 64 64s-28.7 64-64 64z" /></svg>`;
-          d.append(img, s, lo, m);
-          final.append(d);
-        }
-      document.getElementById("homeAllDelete").innerHTML = "";
-      document.getElementById("homeAllDelete").append(final);
-      document.getElementById("homeAllDelete").innerHTML +=
-        "<p id='undo'>العودة الي اخر تعديل</p>";
-      articleClick("home");
-      n = document.createElement("p");
-      n.innerText = "العودة↩️";
-      n.setAttribute("onclick", "location.reload()");
-      n.classList.add("return");
-      document.getElementById("homeAllDelete").prepend(n);
-    };
   }, timeout);
 }
 
-function goToAll() {
-  let back;
-  database.ref(`allMonuments/`).on("value", function (e) {
-    if (!back) {
-      back = e.val();
-    }
-  });
-  document.querySelector(".logged").remove();
-  allForm("homeAllDelete", true, true, false, "allMonuments", true);
-
+async function goToAll() {
+  await allForm("homeAllDelete", true, true, false, "allMonuments", true);
   setTimeout(() => {
-    document.getElementById("homeAllDelete").innerHTML +=
-      "<p id='undo'>العودة الي اخر تعديل</p>";
+    document.querySelector(".logged").remove();
     articleClick("allMonuments");
-    undo.onclick = () => {
-      document.getElementById("homeAllDelete").innerHTML +=
-        "<p id='undo'>العودة الي اخر تعديل</p>";
-      for (let i = 0; i < Object.keys(back).length; i++) {
-        let addd = back[i];
-        database.ref(`allMonuments/${i}/`).set({
-          addd,
-        });
-      }
-      let final = document.createElement("div");
-      for (let l in back)
-        if (Object.hasOwnProperty.call(back, l)) {
-          let i = back[l],
-            d = document.createElement("article"),
-            s = document.createElement("h2"),
-            img = document.createElement("div"),
-            lo = document.createElement("p");
-          m = document.createElement("p");
-          d.setAttribute("data--t", i.text);
-          d.setAttribute("data--id", l);
-          m.classList.add("gg");
-          s.innerText = i.title;
-          lo.innerText = i.pos;
-          m.innerText = i.p;
-          img.style.backgroundImage = `url(${i.image})`;
-          lo.innerHTML += ` <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 256c-35.3 0-64-28.7-64-64s28.7-64 64-64s64 28.7 64 64s-28.7 64-64 64z" /></svg>`;
-          d.append(img, s, lo, m);
-          final.append(d);
-        }
-      document.getElementById("homeAllDelete").innerHTML = "";
-      document.getElementById("homeAllDelete").append(final);
-      document.getElementById("homeAllDelete").innerHTML +=
-        "<p id='undo'>العودة الي اخر تعديل</p>";
-      articleClick("allMonuments", "home");
-      n = document.createElement("p");
-      n.innerText = "العودة↩️";
-      n.setAttribute("onclick", "location.reload()");
-      n.classList.add("return");
-      document.getElementById("homeAllDelete").prepend(n);
-    };
   }, timeout);
 }
 function articleClick(pos, pos2) {
+  console.log(Array(...document.querySelectorAll("article:has(div)")));
   Array(...document.querySelectorAll("article:has(div)")).map((ele) => {
     ele.onclick = () => {
       alert("هذا الاثر سيحذف نهائيا");

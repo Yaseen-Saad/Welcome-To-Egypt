@@ -213,7 +213,7 @@ nav.active p {
   height: 600px;
 }
 .galary article h2 {
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   padding-right: 30px;
   bottom: 0;
 }
@@ -231,6 +231,7 @@ nav.active p {
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
+
 .galary article:hover p {
   right: 10px;
 }

@@ -5,20 +5,19 @@ const resize = () => {
   );
 };
 async function getDataForHomePage() {
-    let t = [];
+  let t = [];
   await database.ref("home/").on("value", function (e) {
-    for (let i = 0; i < e.val().length; i++) {
-      t.push(e.val()[i]);
-    }
+    t = e.val();
+
     for (let a in t)
       if (Object.hasOwnProperty.call(t, a)) {
-        let r = t[a];
-        (l = document.createElement("article")),
-          (n = document.createElement("div")),
-          (i = document.createElement("h2")),
-          (d = document.createElement("p"));
-        n.classList.add("overlayer"),
-          (l.style.backgroundImage = `url(${r.image})`);
+        let r = t[a],
+          l = document.createElement("article"),
+          n = document.createElement("div"),
+          i = document.createElement("h2"),
+          d = document.createElement("p");
+        n.classList.add("overlayer");
+        l.style.backgroundImage = `url(${r.image})`;
         i.innerText = r.title;
         d.innerText = r.p;
         l.append(n, i, d);
